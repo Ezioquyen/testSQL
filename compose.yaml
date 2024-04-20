@@ -23,7 +23,6 @@ services:
 
   spring-boot-app:
     container_name: ezio-spring
-      context:.
     image: ezioquyen/testsql-spring-boot-app
     build:
       context: .
