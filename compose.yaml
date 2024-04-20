@@ -10,13 +10,21 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin@ADMIN
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:33067" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
     volumes:
       - ezio-postgres-java-data:/var/lib/postgres
     networks:
         - java-app
 
   spring-boot-app:
-
+    container_name: ezio-spring
+      context:.
+    image: ezioquyen/testsql-spring-boot-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -28,7 +36,10 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: admin@ADMIN
     depends_on:
-        - postgres
+        postgres:
+          condition: service_healthy
+    networks:
+      - java-app
 
 volumes:
   ezio-postgres-java-data:
