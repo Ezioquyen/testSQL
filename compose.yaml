@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin@ADMIN
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:33067" ]
+      test: [ "CMD", "curl", "-f", "http://localhost:5432" ]
       interval: 10s
       timeout: 5s
       retries: 3
