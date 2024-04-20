@@ -1,7 +1,7 @@
 pipeline {
 
     agent any
-
+    tools {dockerTool  "docker" }
     parameters {
         choice(name: 'ACTION', choices: ['Build', 'Remove all'], description: 'Pick something')
     }
@@ -11,7 +11,7 @@ pipeline {
                 environment name: 'ACTION', value: 'Build'
             }
             steps {
-                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v2/') {
                     sh 'docker compose up -d --build'
                     sh 'docker compose push'
                 }
