@@ -14,6 +14,7 @@ pipeline {
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
                     sh 'docker compose up -d --build'
                     sh 'docker compose push'
+                    sh 'curl https://api.render.com/deploy/srv-coghcjo21fec73danm0g?key=GKRqmgj2XEg'
                 }
             }
         }
