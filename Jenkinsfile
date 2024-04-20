@@ -1,7 +1,7 @@
 pipeline {
 
     agent any
-    tools {dockerTool  "docker" }
+
     parameters {
         choice(name: 'ACTION', choices: ['Build', 'Remove all'], description: 'Pick something')
     }
