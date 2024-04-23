@@ -1,0 +1,14 @@
+spring:
+    datasource:
+      driver-class-name: org.postgresql.Driver
+      password: ${SPRING_DATASOURCE_PASSWORD:admin@ADMIN}
+      url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:33067/postgres?createDatabaseIfNotExist=true}
+      username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    jpa:
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          format_sql: true
+      hibernate:
+        show-sql: false
+        ddl-auto: update

@@ -5,5 +5,5 @@ RUN mvn clean package -Dmaven.test.failure.ignore=true
 
 
 FROM openjdk:18-jdk-alpine
-COPY --from=build /app/target/testSQL-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/project_2_server-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT [ "java", "-jar" , "app.jar" ]

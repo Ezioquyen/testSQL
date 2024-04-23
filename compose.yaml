@@ -16,8 +16,8 @@ services:
         - java-app
 
   spring-boot-app:
-    container_name: ezio-spring
-    image: ezioquyen/testsql-spring-boot-app
+    container_name: project_2_server
+    image: ezioquyen/project_2_server
     build:
       context: .
       dockerfile: Dockerfile
